@@ -69,9 +69,9 @@ func getMergeRequest(c *gitlab.Client) (*[]MergeRequestStats, error) {
 		mr, _, err := c.MergeRequests.ListMergeRequests(&gitlab.ListMergeRequestsOptions{
 			ListOptions:  gitlab.ListOptions{Page: page, PerPage: 100},
 			UpdatedAfter: &updateAfter,
-			TargetBranch: gitlab.String("master"),
-			Scope:        gitlab.String("all"),
-			WIP:          gitlab.String("no"),
+			TargetBranch: gitlab.Ptr("master"),
+			Scope:        gitlab.Ptr("all"),
+			WIP:          gitlab.Ptr("no"),
 		})
 		if err != nil {
 			return nil, err
@@ -286,8 +286,8 @@ func getChanges(c *gitlab.Client, mergeStats []MergeRequestStats) (*[]ChangeStat
 	for _, mr := range mergeStats {
 
 		compareResult, _, err := c.Repositories.Compare(mr.ProjectID, &gitlab.CompareOptions{
-			From: gitlab.String("master"),
-			To:   gitlab.String(mr.SourceBranch),
+			From: gitlab.Ptr("master"),
+			To:   gitlab.Ptr(mr.SourceBranch),
 		})
 		if err != nil {
 			return nil, err
