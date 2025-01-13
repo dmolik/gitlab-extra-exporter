@@ -17,7 +17,7 @@ type MergeClosedStats struct {
 	Duration     float64
 }
 
-// MergeMergedStats is the strucct for merged merge requests
+// MergeMergedStats is the struct for merged merge requests
 type MergeMergedStats struct {
 	MergeRequest MergeRequestStats
 	MergedAt     *time.Time
@@ -37,6 +37,7 @@ type MergeRequestStats struct {
 	LastUpdated  *time.Time
 	CreatedAt    *time.Time
 	Assignees    int
+	Notes        int
 }
 
 // ApprovalStats is the struct for Gitlab Approvals data we want
@@ -95,6 +96,7 @@ func getMergeRequest(c *gitlab.Client) (*[]MergeRequestStats, error) {
 			Title:        mr.Title,
 			ID:           strconv.Itoa(mr.ID),
 			InternalID:   mr.IID,
+			Notes:        mr.UserNotesCount,
 		})
 	}
 
@@ -172,6 +174,7 @@ func getOpenMergeRequests(c *gitlab.Client, errCh chan<- error, wg *sync.WaitGro
 			ChangeCount:  result.ChangesCount,
 			Assignees:    len(result.Assignees),
 			SourceBranch: result.SourceBranch,
+			Notes:        result.UserNotesCount,
 		})
 
 	}
@@ -207,6 +210,7 @@ func getMergedMergeRequests(c *gitlab.Client, errCh chan<- error, wg *sync.WaitG
 					ChangeCount:  result.ChangesCount,
 					Assignees:    len(result.Assignees),
 					SourceBranch: result.SourceBranch,
+					Notes:        result.UserNotesCount,
 				},
 			})
 		}
@@ -243,6 +247,7 @@ func getClosedMergeRequests(c *gitlab.Client, errCh chan<- error, wg *sync.WaitG
 					ChangeCount:  result.ChangesCount,
 					Assignees:    len(result.Assignees),
 					SourceBranch: result.SourceBranch,
+					Notes:        result.UserNotesCount,
 				},
 			})
 		}
