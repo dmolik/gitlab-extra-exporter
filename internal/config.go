@@ -1,6 +1,6 @@
 package internal
 
-//Config struct for holding config for exporter and Gitlab
+// Config struct for holding config for exporter and Gitlab
 type Config struct {
 	ListenAddress string
 	ListenPath    string
