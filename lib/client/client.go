@@ -8,7 +8,7 @@ import (
 
 	"github.com/dmolik/gitlab-extra-exporter/internal"
 	log "github.com/sirupsen/logrus"
-	gitlab "github.com/xanzy/go-gitlab"
+	gitlab "gitlab.com/gitlab-org/api/client-go"
 )
 
 // Stats struct is the list of expected to results to export.

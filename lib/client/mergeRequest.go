@@ -7,24 +7,24 @@ import (
 	"time"
 
 	log "github.com/sirupsen/logrus"
-	gitlab "github.com/xanzy/go-gitlab"
+	gitlab "gitlab.com/gitlab-org/api/client-go"
 )
 
-//MergeClosedStats is the struct for closed merge requests
+// MergeClosedStats is the struct for closed merge requests
 type MergeClosedStats struct {
 	MergeRequest MergeRequestStats
 	ClosedAt     *time.Time
 	Duration     float64
 }
 
-//MergeMergedStats is the strucct for merged merge requests
+// MergeMergedStats is the strucct for merged merge requests
 type MergeMergedStats struct {
 	MergeRequest MergeRequestStats
 	MergedAt     *time.Time
 	Duration     float64
 }
 
-//MergeRequestStats is the base struct for Gitlab Merge Requests data we want
+// MergeRequestStats is the base struct for Gitlab Merge Requests data we want
 type MergeRequestStats struct {
 	ID           string
 	InternalID   int
@@ -39,14 +39,14 @@ type MergeRequestStats struct {
 	Assignees    int
 }
 
-//ApprovalStats is the struct for Gitlab Approvals data we want
+// ApprovalStats is the struct for Gitlab Approvals data we want
 type ApprovalStats struct {
 	Approvals int
 	ID        string
 	ProjectID string
 }
 
-//ChangeStats is the struct for the total amount of changes within a MR.
+// ChangeStats is the struct for the total amount of changes within a MR.
 type ChangeStats struct {
 	ProjectID string
 	ID        string
@@ -54,7 +54,7 @@ type ChangeStats struct {
 	Deletions int
 }
 
-//getMergeRequest retrieves all merge requests of the last 7 days
+// getMergeRequest retrieves all merge requests of the last 7 days
 func getMergeRequest(c *gitlab.Client) (*[]MergeRequestStats, error) {
 
 	updateAfter := time.Now().Add(-7 * 24 * time.Hour)
@@ -101,7 +101,7 @@ func getMergeRequest(c *gitlab.Client) (*[]MergeRequestStats, error) {
 	return &result, nil
 }
 
-//getMergeRequestsDetails retrieves the details of given MRs we need for metrics.
+// getMergeRequestsDetails retrieves the details of given MRs we need for metrics.
 func getMergeRequestsDetails(c *gitlab.Client, mrs []MergeRequestStats) (*[]MergeRequestStats, *[]MergeMergedStats, *[]MergeClosedStats, error) {
 
 	var mrOpen []MergeRequestStats

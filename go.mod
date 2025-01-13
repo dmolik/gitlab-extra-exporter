@@ -5,7 +5,7 @@ go 1.23.4
 require (
 	github.com/prometheus/client_golang v1.20.5
 	github.com/sirupsen/logrus v1.9.3
-	github.com/xanzy/go-gitlab v0.115.0
+	gitlab.com/gitlab-org/api/client-go v0.119.0
 )
 
 require (
@@ -19,8 +19,8 @@ require (
 	github.com/prometheus/client_model v0.6.1 // indirect
 	github.com/prometheus/common v0.55.0 // indirect
 	github.com/prometheus/procfs v0.15.1 // indirect
-	golang.org/x/oauth2 v0.21.0 // indirect
+	golang.org/x/oauth2 v0.24.0 // indirect
 	golang.org/x/sys v0.22.0 // indirect
-	golang.org/x/time v0.3.0 // indirect
+	golang.org/x/time v0.8.0 // indirect
 	google.golang.org/protobuf v1.34.2 // indirect
 )

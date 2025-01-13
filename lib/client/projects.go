@@ -4,16 +4,16 @@ import (
 	"strconv"
 
 	log "github.com/sirupsen/logrus"
-	gitlab "github.com/xanzy/go-gitlab"
+	gitlab "gitlab.com/gitlab-org/api/client-go"
 )
 
-//ProjectStats is the struct for Gitlab projects data we want.
+// ProjectStats is the struct for Gitlab projects data we want.
 type ProjectStats struct {
 	ID                string
 	PathWithNamespace string
 }
 
-//getProjectStats retrieves all projects from Gitlab.
+// getProjectStats retrieves all projects from Gitlab.
 func getProjects(c *gitlab.Client) (*[]ProjectStats, error) {
 	var result []ProjectStats
 	var projectsTotal []*gitlab.Project
