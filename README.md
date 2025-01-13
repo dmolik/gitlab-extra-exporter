@@ -1,5 +1,6 @@
 ![build](https://github.com/dmolik/gitlab-extra-exporter/workflows/build/badge.svg)
 [![Go Report Card](https://goreportcard.com/badge/github.com/dmolik/gitlab-extra-exporter)](https://goreportcard.com/report/github.com/dmolik/gitlab-extra-exporter)
+[![Go Version](https://img.shields.io/github/go-mod/go-version/dmolik/gitlab-extra-exporter)
 
 # gitlab-extra-exporter
 
