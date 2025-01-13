@@ -1,4 +1,4 @@
-//Package client contains all the files to extract the information from gitlab
+// Package client contains all the files to extract the information from gitlab
 package client
 
 import (
@@ -6,12 +6,12 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/dmolik/gitlab-extra-exporter/internal"
 	log "github.com/sirupsen/logrus"
-	"github.com/whyeasy/gitlab-extra-exporter/internal"
 	gitlab "github.com/xanzy/go-gitlab"
 )
 
-//Stats struct is the list of expected to results to export.
+// Stats struct is the list of expected to results to export.
 type Stats struct {
 	Projects            *[]ProjectStats
 	MergeRequests       *[]MergeRequestStats
@@ -22,7 +22,7 @@ type Stats struct {
 	Changes             *[]ChangeStats
 }
 
-//ExporterClient contains Gitlab information for connecting
+// ExporterClient contains Gitlab information for connecting
 type ExporterClient struct {
 	gitlabURI    string
 	gitlabAPIKey string
@@ -30,7 +30,7 @@ type ExporterClient struct {
 	interval     time.Duration
 }
 
-//New returns a new Client connection to Gitlab.
+// New returns a new Client connection to Gitlab.
 func New(c internal.Config) *ExporterClient {
 
 	convertedTime, _ := strconv.ParseInt(c.Interval, 10, 64)
@@ -58,7 +58,7 @@ var CachedStats *Stats = &Stats{
 	Changes:             &[]ChangeStats{},
 }
 
-//GetStats retrieves data from API to create metrics from.
+// GetStats retrieves data from API to create metrics from.
 func (c *ExporterClient) GetStats() (*Stats, error) {
 
 	return CachedStats, nil

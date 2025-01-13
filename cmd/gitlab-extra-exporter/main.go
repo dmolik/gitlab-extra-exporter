@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"time"
 
 	"net/http"
 	"os"
@@ -11,9 +12,9 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/whyeasy/gitlab-extra-exporter/internal"
-	"github.com/whyeasy/gitlab-extra-exporter/lib/client"
-	"github.com/whyeasy/gitlab-extra-exporter/lib/collector"
+	"github.com/dmolik/gitlab-extra-exporter/internal"
+	"github.com/dmolik/gitlab-extra-exporter/lib/client"
+	"github.com/dmolik/gitlab-extra-exporter/lib/collector"
 )
 
 var (
@@ -56,7 +57,15 @@ func main() {
 			log.Error(err)
 		}
 	})
-	log.Fatal(http.ListenAndServe(":"+config.ListenAddress, nil))
+
+	srv := &http.Server{
+		Addr:         fmt.Sprintf(":%s", config.ListenAddress),
+		Handler:      http.DefaultServeMux,
+		ReadTimeout:  5 * time.Second,
+		WriteTimeout: 5 * time.Second,
+		IdleTimeout:  5 * time.Second,
+	}
+	log.Fatal(srv.ListenAndServe())
 }
 
 func parseConfig() error {

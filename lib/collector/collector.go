@@ -1,4 +1,4 @@
-//Package collector contains all the go files needed to export metrics.
+// Package collector contains all the go files needed to export metrics.
 package collector
 
 import (
@@ -8,10 +8,10 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	log "github.com/sirupsen/logrus"
 
-	client "github.com/whyeasy/gitlab-extra-exporter/lib/client"
+	client "github.com/dmolik/gitlab-extra-exporter/lib/client"
 )
 
-//Collector struct for holding Prometheus Desc and Exporter Client
+// Collector struct for holding Prometheus Desc and Exporter Client
 type Collector struct {
 	up     *prometheus.Desc
 	client *client.ExporterClient
@@ -32,7 +32,7 @@ type Collector struct {
 	mergeRequestChanges   *prometheus.Desc
 }
 
-//New creates a new Collector with Prometheus descriptors.
+// New creates a new Collector with Prometheus descriptors.
 func New(c *client.ExporterClient) *Collector {
 	log.Info("Creating collector")
 	return &Collector{
@@ -56,7 +56,7 @@ func New(c *client.ExporterClient) *Collector {
 	}
 }
 
-//Describe the metrics that are collected.
+// Describe the metrics that are collected.
 func (c *Collector) Describe(ch chan<- *prometheus.Desc) {
 	ch <- c.up
 
@@ -76,7 +76,7 @@ func (c *Collector) Describe(ch chan<- *prometheus.Desc) {
 	ch <- c.mergeRequestChanges
 }
 
-//Collect gathers the metrics that are exported.
+// Collect gathers the metrics that are exported.
 func (c *Collector) Collect(ch chan<- prometheus.Metric) {
 
 	log.Info("Running scrape")
