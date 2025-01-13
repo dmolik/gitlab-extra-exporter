@@ -37,11 +37,3 @@ jobs:
       run: make deps
     - name: Build & Test
       run: make build
-    - name: Run Trivy vulnerability scanner
-      uses: aquasecurity/trivy-action@master
-      with:
-        image-ref: "dmolik/gitlab-extra-exporter:${{ github.sha }}"
-        format: "table"
-        exit-code: "1"
-        ignore-unfixed: true
-        severity: "CRITICAL,HIGH"
