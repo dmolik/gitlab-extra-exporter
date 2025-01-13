@@ -1,6 +1,5 @@
-![build](https://github.com/Whyeasy/gitlab-extra-exporter/workflows/build/badge.svg)
-![status-badge](https://goreportcard.com/badge/github.com/Whyeasy/gitlab-extra-exporter)
-![Github go.mod Go version](https://img.shields.io/github/go-mod/go-version/Whyeasy/gitlab-extra-exporter)
+![build](https://github.com/dmolik/gitlab-extra-exporter/workflows/build/badge.svg)
+[![Go Report Card](https://goreportcard.com/badge/github.com/dmolik/gitlab-extra-exporter)](https://goreportcard.com/report/github.com/dmolik/gitlab-extra-exporter)
 
 # gitlab-extra-exporter
 
