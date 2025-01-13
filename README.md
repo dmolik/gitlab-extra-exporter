@@ -1,40 +1,130 @@
-![build](https://github.com/dmolik/gitlab-extra-exporter/workflows/build/badge.svg)
-[![Go Report Card](https://goreportcard.com/badge/github.com/dmolik/gitlab-extra-exporter)](https://goreportcard.com/report/github.com/dmolik/gitlab-extra-exporter)
-[![Go Version](https://img.shields.io/github/go-mod/go-version/dmolik/gitlab-extra-exporter)
+<p align="center">
+  <img alt="GoReleaser Logo" src="https://avatars2.githubusercontent.com/u/24697112?v=3&s=200" height="140" />
+  <h3 align="center">GoReleaser</h3>
+  <p align="center">Release engineering, simplified.</p>
+</p>
 
-# gitlab-extra-exporter
+---
 
-This is a Prometheus exporter for Gitlab to get information via the API.
+GoReleaser builds Go binaries for several platforms, creates a GitHub release and then
+pushes a Homebrew formula to a tap repository. All that wrapped in your favorite CI.
 
-Currently this exporter retrieves the following data:
+![](https://raw.githubusercontent.com/goreleaser/example-simple/main/goreleaser.gif)
 
-- All projects within Gitlab
-- Retrieves all Merge Request from the last 7 days with:
-  - When the MR is opened.
-  - When the MR is merged.
-  - When the MR is closed.
-  - Last update done to the MR.
-  - Amount of changes within the MR.
-  - Amount of assignees.
+---
 
-Because of the amount of API request done to get the amount of changes on a MR, limit this exporter to be only requested once per 5 minutes for example, with a Service Monitor time out of 30 sec (depending on the amount of MRs).
+## Get GoReleaser
 
-## Requirements
+- [On your machine](https://goreleaser.com/install/);
+- [On CI/CD systems](https://goreleaser.com/ci/).
 
-### Required
+## Documentation
 
-Provide your Gitlab URI; `--gitlabURI <string>` or as env variable `GITLAB_URI`.
+Documentation is hosted live at https://goreleaser.com
 
-Provide a Gitlab API Key with access to projects and merge requests; `--gitlabAPIKey <string>` or as env variables `GITLAB_API_KEY`
+## Community
 
-### Optional
+You have questions, need support and or just want to talk about GoReleaser?
 
-Change listening port of the exporter; `--listenAddress <string>` or as env variable `LISTEN_ADDRESS`. Default = `8080`
+Here are ways to get in touch with the GoReleaser community:
 
-Change listening path of the exporter; `--listenPath <string>` or as env variable `LISTEN_PATH`. Default = `/metrics`
+[![Join Discord](https://img.shields.io/badge/Join_our_Discord_server-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/RGEBtg8vQ6)
+[![Follow Twitter](https://img.shields.io/badge/follow_on_twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/goreleaser)
+[![GitHub Discussions](https://img.shields.io/badge/GITHUB_DISCUSSION-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/goreleaser/goreleaser/discussions)
 
-Change the interval of retrieving data in the background; `--interval <string>` or as env variable `INTERVAL`. Default is `60`
+You can find the links above and all others [here](https://goreleaser.com/links/).
 
-## Helm
+### Code of Conduct
 
-You can find a helm chart to install the exporter [here](https://github.com/Whyeasy/helm-charts/tree/master/charts/gitlab-extra-exporter).
+This project adheres to the Contributor Covenant [code of conduct](https://github.com/goreleaser/.github/blob/main/CODE_OF_CONDUCT.md).
+By participating, you are expected to uphold this code.
+We appreciate your contribution.
+Please refer to our [contributing guidelines](CONTRIBUTING.md) for further information.
+
+## Badges
+
+[![Release](https://img.shields.io/github/release/goreleaser/goreleaser.svg?style=for-the-badge)](https://github.com/goreleaser/goreleaser/releases/latest)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=for-the-badge)](/LICENSE.md)
+[![Build status](https://img.shields.io/github/actions/workflow/status/goreleaser/goreleaser/build.yml?style=for-the-badge&branch=main)](https://github.com/goreleaser/goreleaser/actions?workflow=build)
+[![Codecov branch](https://img.shields.io/codecov/c/github/goreleaser/goreleaser/main.svg?style=for-the-badge)](https://codecov.io/gh/goreleaser/goreleaser)
+[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/goreleaser&style=for-the-badge)](https://artifacthub.io/packages/search?repo=goreleaser)
+[![Go Doc](https://img.shields.io/badge/godoc-reference-blue.svg?style=for-the-badge)](http://godoc.org/github.com/goreleaser/goreleaser)
+[![Powered By: GoReleaser](https://img.shields.io/badge/powered%20by-goreleaser-green.svg?style=for-the-badge)](https://github.com/goreleaser)
+[![Backers on Open Collective](https://opencollective.com/goreleaser/backers/badge.svg?style=for-the-badge)](https://opencollective.com/goreleaser/backers/)
+[![Sponsors on Open Collective](https://opencollective.com/goreleaser/sponsors/badge.svg?style=for-the-badge)](https://opencollective.com/goreleaser/sponsors/)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg?style=for-the-badge)](https://conventionalcommits.org)
+[![CII Best Practices](https://img.shields.io/cii/summary/5420?label=openssf%20best%20practices&style=for-the-badge)](https://bestpractices.coreinfrastructure.org/projects/5420)
+
+## GitHub Sponsors
+
+High-tier sponsors of [@caarlos0](https://github.com/sponsors/caarlos0/) on GitHub:
+
+<a href="https://smallstep.com" target="_blank"><img width="200" src="https://github.com/goreleaser/goreleaser/assets/245435/05ade839-6652-474a-af90-da3ea67dde24"></a>
+
+## OpenCollective
+
+### Sponsors
+
+Does your company use goreleaser? Help keep the project bug-free and feature rich by [sponsoring the project](https://opencollective.com/goreleaser#sponsor).
+
+<a href="https://opencollective.com/goreleaser/sponsors/0/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/sponsors/0/avatar"></a>
+<a href="https://opencollective.com/goreleaser/sponsors/1/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/sponsors/1/avatar"></a>
+<a href="https://opencollective.com/goreleaser/sponsors/2/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/sponsors/2/avatar"></a>
+<a href="https://opencollective.com/goreleaser/sponsors/3/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/sponsors/3/avatar"></a>
+<a href="https://opencollective.com/goreleaser/sponsors/4/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/sponsors/4/avatar"></a>
+<a href="https://opencollective.com/goreleaser/sponsors/5/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/sponsors/5/avatar"></a>
+<a href="https://opencollective.com/goreleaser/sponsors/6/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/sponsors/6/avatar"></a>
+<a href="https://opencollective.com/goreleaser/sponsors/7/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/sponsors/7/avatar"></a>
+<a href="https://opencollective.com/goreleaser/sponsors/8/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/sponsors/8/avatar"></a>
+<a href="https://opencollective.com/goreleaser/sponsors/9/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/sponsors/9/avatar"></a>
+<a href="https://opencollective.com/goreleaser/sponsors/10/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/sponsors/10/avatar"></a>
+<a href="https://opencollective.com/goreleaser/sponsors/11/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/sponsors/11/avatar"></a>
+<a href="https://opencollective.com/goreleaser/sponsors/12/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/sponsors/12/avatar"></a>
+<a href="https://opencollective.com/goreleaser/sponsors/13/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/sponsors/13/avatar"></a>
+<a href="https://opencollective.com/goreleaser/sponsors/14/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/sponsors/14/avatar"></a>
+<a href="https://opencollective.com/goreleaser/sponsors/15/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/sponsors/15/avatar"></a>
+<a href="https://opencollective.com/goreleaser/sponsors/16/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/sponsors/16/avatar"></a>
+
+### Backers
+
+Love our work and community? [Become a backer](https://opencollective.com/goreleaser).
+
+<a href="https://opencollective.com/goreleaser/backers/0/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/backers/0/avatar"></a>
+<a href="https://opencollective.com/goreleaser/backers/1/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/backers/1/avatar"></a>
+<a href="https://opencollective.com/goreleaser/backers/2/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/backers/2/avatar"></a>
+<a href="https://opencollective.com/goreleaser/backers/3/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/backers/3/avatar"></a>
+<a href="https://opencollective.com/goreleaser/backers/4/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/backers/4/avatar"></a>
+<a href="https://opencollective.com/goreleaser/backers/5/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/backers/5/avatar"></a>
+<a href="https://opencollective.com/goreleaser/backers/6/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/backers/6/avatar"></a>
+<a href="https://opencollective.com/goreleaser/backers/7/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/backers/7/avatar"></a>
+<a href="https://opencollective.com/goreleaser/backers/8/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/backers/8/avatar"></a>
+<a href="https://opencollective.com/goreleaser/backers/9/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/backers/9/avatar"></a>
+<a href="https://opencollective.com/goreleaser/backers/10/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/backers/10/avatar"></a>
+<a href="https://opencollective.com/goreleaser/backers/11/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/backers/11/avatar"></a>
+<a href="https://opencollective.com/goreleaser/backers/12/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/backers/12/avatar"></a>
+<a href="https://opencollective.com/goreleaser/backers/13/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/backers/13/avatar"></a>
+<a href="https://opencollective.com/goreleaser/backers/14/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/backers/14/avatar"></a>
+<a href="https://opencollective.com/goreleaser/backers/15/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/backers/15/avatar"></a>
+<a href="https://opencollective.com/goreleaser/backers/16/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/backers/16/avatar"></a>
+<a href="https://opencollective.com/goreleaser/backers/17/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/backers/17/avatar"></a>
+<a href="https://opencollective.com/goreleaser/backers/18/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/backers/18/avatar"></a>
+<a href="https://opencollective.com/goreleaser/backers/19/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/backers/19/avatar"></a>
+<a href="https://opencollective.com/goreleaser/backers/20/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/backers/20/avatar"></a>
+<a href="https://opencollective.com/goreleaser/backers/21/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/backers/21/avatar"></a>
+<a href="https://opencollective.com/goreleaser/backers/22/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/backers/22/avatar"></a>
+<a href="https://opencollective.com/goreleaser/backers/23/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/backers/23/avatar"></a>
+<a href="https://opencollective.com/goreleaser/backers/24/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/backers/24/avatar"></a>
+<a href="https://opencollective.com/goreleaser/backers/25/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/backers/25/avatar"></a>
+<a href="https://opencollective.com/goreleaser/backers/26/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/backers/26/avatar"></a>
+<a href="https://opencollective.com/goreleaser/backers/27/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/backers/27/avatar"></a>
+<a href="https://opencollective.com/goreleaser/backers/28/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/backers/28/avatar"></a>
+<a href="https://opencollective.com/goreleaser/backers/29/website" rel="nofollow sponsored" target="_blank"><img src="https://opencollective.com/goreleaser/backers/29/avatar"></a>
+
+### Contributors
+
+This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
+<a href="https://github.com/goreleaser/goreleaser/graphs/contributors"><img src="https://opencollective.com/goreleaser/contributors.svg?width=890" /></a>
+
+## Stargazers over time
+
+[![Stargazers over time](https://starchart.cc/goreleaser/goreleaser.svg?variant=adaptive)](https://starchart.cc/goreleaser/goreleaser)

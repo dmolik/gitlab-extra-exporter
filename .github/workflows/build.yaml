@@ -37,10 +37,6 @@ jobs:
       run: make deps
     - name: Build & Test
       run: make build
-    - name: Validate release
-      uses: goreleaser/goreleaser-action@v6
-      with:
-        args: release --snapshot --skip-publish --rm-dist
     - name: Run Trivy vulnerability scanner
       uses: aquasecurity/trivy-action@master
       with:
